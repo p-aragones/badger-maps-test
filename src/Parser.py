@@ -37,7 +37,7 @@ class Parser:
             else:
                 full_name = person.first_name + " " + person.last_name
                 full_names.append(full_name)
-        print(sorted(full_names))
+        print(sorted(full_names, key=str.lower))
     
     def get_dates(self):
         try:
