@@ -12,8 +12,7 @@ import sys
 def main():
     parser = Parser(sys.argv[1])
     parser.parse_file()
-    parser.first_date()
-    parser.last_date()
+    parser.get_dates()
 
 if __name__ == "__main__":
     main()
