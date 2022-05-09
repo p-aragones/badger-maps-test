@@ -6,7 +6,7 @@
 ##
 
 class Person:
-    def __init__(self, first_name, last_name, street, zip, city, type, date, job, phone, company):
+    def __init__(self, first_name, last_name, street, zip, city, type, date, job, phone, company, line):
         self.first_name = first_name
         self.last_name = last_name
         self.street = street
@@ -17,3 +17,4 @@ class Person:
         self.job = job
         self.phone = phone
         self.company = company
+        self.line = line
