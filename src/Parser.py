@@ -44,5 +44,21 @@ class Parser:
                     customer = person
             except:
                 print("invalid date at line", person.line + 2, "of file", self.path)
-        print("customer with the oldest check in is", customer.first_name, customer.last_name, "at", end=" ")
+        print("customer with the oldest check-in is", customer.first_name, customer.last_name, "at", end=" ")
+        print(date.tm_mday, date.tm_mon, date.tm_year, sep="/")
+    
+    def last_date(self):
+        try:
+            date = time.strptime(self.people[0].date, "%d/%m/%Y")
+        except:
+            print("invalid date found at line 2")
+        for person in self.people:
+            try:
+                new_date = time.strptime(person.date, "%d/%m/%Y")
+                if (new_date > date):
+                    date = new_date
+                    customer = person
+            except:
+                print("invalid date at line", person.line + 2, "of file", self.path)
+        print("customer with the latest check-in is", customer.first_name, customer.last_name, "at", end=" ")
         print(date.tm_mday, date.tm_mon, date.tm_year, sep="/")
