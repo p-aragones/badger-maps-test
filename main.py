@@ -13,6 +13,7 @@ def main():
     parser = Parser(sys.argv[1])
     parser.parse_file()
     parser.get_dates()
+    parser.print_names()
 
 if __name__ == "__main__":
     main()

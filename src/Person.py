@@ -17,4 +17,4 @@ class Person:
         self.job = job
         self.phone = phone
         self.company = company
-        self.line = line
+        self.line = line + 2

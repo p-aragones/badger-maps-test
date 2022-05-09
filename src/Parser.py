@@ -22,13 +22,22 @@ class Parser:
             next(file)
             reader = csv.reader(file, delimiter=',')
             for row in reader:
+                if (len(row) < 10):
+                    print("not enough fields in line", line)
+                    continue
                 person = Person(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], line)
                 line += 1
                 self.people.append(person)
 
     def print_names(self):
+        full_names = []
         for person in self.people:
-            print(person.first_name)
+            if (person.first_name == "" or person.last_name == ""):
+                print("empty field at line", person.line)
+            else:
+                full_name = person.first_name + " " + person.last_name
+                full_names.append(full_name)
+        print(sorted(full_names))
     
     def get_dates(self):
         try:
@@ -45,7 +54,7 @@ class Parser:
                     last_date = new_date
                     last_customer = person
             except:
-                print("invalid date at line", person.line + 2, "of file", self.path)
+                print("invalid date at line", person.line, "of file", self.path)
         print("customer with the oldest check-in is", first_customer.first_name, first_customer.last_name, "at", end=" ")
         print(first_date.tm_mday, first_date.tm_mon, first_date.tm_year, sep="/")
         print("customer with the latest check-in is", last_customer.first_name, last_customer.last_name, "at", end=" ")
