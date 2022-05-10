@@ -11,7 +11,7 @@ import sys
 
 def main():
     if (len(sys.argv) < 2):
-        print("need file name")
+        print("USAGE: python3 ./main.py {filename}")
         exit()
     parser = Parser(sys.argv[1])
     parser.parse_file()
