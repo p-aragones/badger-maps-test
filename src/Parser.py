@@ -19,16 +19,20 @@ class Parser:
     def parse_file(self):
         line = 0
 
-        with open(self.path, newline='', encoding="utf8") as file:
-            next(file)
-            reader = csv.reader(file, delimiter=',')
-            for row in reader:
-                if (len(row) < 10):
-                    print("not enough fields in line", line)
-                    continue
-                person = Person(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], line)
-                line += 1
-                self.people.append(person)
+        try:
+            with open(self.path, newline='', encoding="utf8") as file:
+                next(file)
+                reader = csv.reader(file, delimiter=',')
+                for row in reader:
+                    if (len(row) < 10):
+                        print("not enough fields in line", line)
+                        continue
+                    person = Person(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], line)
+                    line += 1
+                    self.people.append(person)
+        except:
+            print("could not open file", self.path)
+            exit()
 
     def print_names(self):
         full_names = []
