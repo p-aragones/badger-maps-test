@@ -19,7 +19,7 @@ class Parser:
     def parse_file(self):
         line = 0
 
-        with open(self.path, newline='') as file:
+        with open(self.path, newline='', encoding="utf8") as file:
             next(file)
             reader = csv.reader(file, delimiter=',')
             for row in reader:
