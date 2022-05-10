@@ -9,6 +9,7 @@ from src.Person import Person
 
 import csv
 import time
+import unidecode
 
 class Parser:
     def __init__(self, path):
@@ -37,7 +38,7 @@ class Parser:
             else:
                 full_name = person.first_name + " " + person.last_name
                 full_names.append(full_name)
-        print(sorted(full_names, key=str.lower))
+        print(sorted(full_names, key=unidecode.unidecode))
     
     def get_dates(self):
         try:
